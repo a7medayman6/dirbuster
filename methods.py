@@ -25,11 +25,11 @@ def read(file_path):
 
 def check(url):
     if re.match(regex, url) is not None :
-        """
+        
         RESPONSE = urlopen(url).getcode()
         if RESPONSE != 200:
             return False
-        """    
+           
     else:
         return False
 
@@ -42,11 +42,3 @@ def append(file_path, data):
     file.close()
 
 
-"""
-s = 'https://satharus.wordpress.com'
-s+= '/html'
-print(s)    
-if  1 + 0 :
-    s+ = '.html'
-print(s)
-"""

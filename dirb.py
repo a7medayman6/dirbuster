@@ -29,12 +29,10 @@ for word in words:
             TEMP += '.txt'
         elif i == 3:
             TEMP += '.pdf'
-        print (TEMP)
-        append(RESULTS_FILE, TEMP)
+
         if check(TEMP):
             print (TEMP)
             append(RESULTS_FILE, TEMP)
             
 print('DONE')
 
-#  https://satharus.wordpress.com
