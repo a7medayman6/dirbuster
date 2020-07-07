@@ -1,7 +1,7 @@
 import os
 from methods import *
 
-FILE_NAME = 'small.txt'
+FILE_NAME = 'test.txt'
 RESULTS_FILE = 'results.txt'
 words = read(FILE_NAME)
 
@@ -18,7 +18,7 @@ while not CORRECT:
         print ("WRONG URL.") 
 
 for word in words:
-    for i in range(4):
+    for i in range(5):
         TEMP = BASE_URL
         TEMP += '/' + word.replace('\n', '')
         if i == 0:
@@ -29,9 +29,10 @@ for word in words:
             TEMP += '.txt'
         elif i == 3:
             TEMP += '.pdf'
-
+        
+        print(TEMP)
         if check(TEMP):
-            print (TEMP)
+            print ('FOUND!')
             append(RESULTS_FILE, TEMP)
             
 print('DONE')

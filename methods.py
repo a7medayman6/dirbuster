@@ -1,5 +1,6 @@
 from urllib.request import urlopen
 import re
+import requests
 
 regex = re.compile(
         r'^(?:http|ftp)s?://' # http:// or https://
@@ -17,17 +18,16 @@ def read(file_path):
         for word_ in file:
             temp_words.add(word_)
             i+=1
-           # if i >= 15600: # more than 15568 produces an ERROR: UnicodeDecodeError: 'utf-8' codec can't decode byte 0xf3 in position 4382: invalid continuation byte
-           #     break
-            
+           
     file.close()
     return temp_words
 
 def check(url):
     if re.match(regex, url) is not None :
         
-        RESPONSE = urlopen(url).getcode()
-        if RESPONSE != 200:
+        REQUEST = requests.get(url)
+        print("checking...")
+        if REQUEST.status_code != 200:
             return False
            
     else:
@@ -38,7 +38,7 @@ def check(url):
 # Append a string to a file 
 def append(file_path, data):
     with open(file_path, 'a+') as file:
-        file.write(data)
+        file.write(data + '\n')
     file.close()
 
 
