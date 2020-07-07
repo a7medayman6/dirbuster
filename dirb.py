@@ -1,13 +1,16 @@
 import os
 from methods import *
 
-FILE_NAME = 'big.txt'
+FILE_NAME = 'small.txt'
+RESULTS_FILE = 'results.txt'
 words = read(FILE_NAME)
 
-CORRECT = True
+CORRECT = False
 BASE_URL = ''
 while not CORRECT:
+    CORRECT = True
     BASE_URL = input('Enter The website URL:\t')
+
     if check(BASE_URL):
         CORRECT = True
     else:
@@ -15,10 +18,23 @@ while not CORRECT:
         print ("WRONG URL.") 
 
 for word in words:
-    TEMP = BASE_URL
-    TEMP += '/' + word
-    if check(TEMP):
+    for i in range(4):
+        TEMP = BASE_URL
+        TEMP += '/' + word.replace('\n', '')
+        if i == 0:
+            TEMP = TEMP + '.html'
+        elif i == 1:
+            TEMP += '.php'
+        elif i == 2:
+            TEMP += '.txt'
+        elif i == 3:
+            TEMP += '.pdf'
         print (TEMP)
-        append(FILE_NAME, TEMP)
-
+        append(RESULTS_FILE, TEMP)
+        if check(TEMP):
+            print (TEMP)
+            append(RESULTS_FILE, TEMP)
+            
 print('DONE')
+
+#  https://satharus.wordpress.com
