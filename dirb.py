@@ -1,7 +1,7 @@
 import os
 from methods import *
 
-FILE_NAME = 'test.txt'
+FILE_NAME = 'small.txt'
 RESULTS_FILE = 'results.txt'
 words = read(FILE_NAME)
 
